@@ -1,4 +1,4 @@
-package com.example.carwarehouse.entities;
+package com.example.carwarehouse.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class WarehouseEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name", length = 100)

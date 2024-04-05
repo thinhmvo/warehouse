@@ -1,6 +1,6 @@
 package com.example.carwarehouse.controllers;
 
-import com.example.carwarehouse.entities.WarehouseEntity;
+import com.example.carwarehouse.models.WarehouseEntity;
 import com.example.carwarehouse.services.WarehouseService;
 import com.example.carwarehouse.vo.WarehouseVO;
 import org.apache.coyote.BadRequestException;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/warehouse")
 public class WarehouseController {

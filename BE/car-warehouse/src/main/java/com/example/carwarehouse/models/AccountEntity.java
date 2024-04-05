@@ -1,4 +1,4 @@
-package com.example.carwarehouse.entities;
+package com.example.carwarehouse.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class AccountEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "username", length = 100)

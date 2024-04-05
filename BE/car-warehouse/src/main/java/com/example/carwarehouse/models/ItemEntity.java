@@ -1,4 +1,4 @@
-package com.example.carwarehouse.entities;
+package com.example.carwarehouse.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

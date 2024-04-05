@@ -1,6 +1,6 @@
 package com.example.carwarehouse.services;
 
-import com.example.carwarehouse.entities.AccountEntity;
+import com.example.carwarehouse.models.AccountEntity;
 import com.example.carwarehouse.repositories.AccountRepository;
 import com.example.carwarehouse.vo.AccountVO;
 import org.apache.coyote.BadRequestException;

@@ -1,0 +1,11 @@
+
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/projectone
+        username: postgres
+        password: postgres1   
+
+output:
+        ansi:
+            enabled: ALWAYS

@@ -1,7 +1,8 @@
 package com.example.carwarehouse.repositories;
 
-import com.example.carwarehouse.entities.WarehouseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.carwarehouse.models.WarehouseEntity;
 
 import java.util.List;
 

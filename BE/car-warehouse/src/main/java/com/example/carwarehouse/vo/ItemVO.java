@@ -1,6 +1,7 @@
 package com.example.carwarehouse.vo;
 
-import com.example.carwarehouse.entities.ItemEntity;
+import com.example.carwarehouse.models.ItemEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

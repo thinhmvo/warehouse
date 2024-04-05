@@ -1,6 +1,6 @@
 package com.example.carwarehouse.controllers;
 
-import com.example.carwarehouse.entities.ItemEntity;
+import com.example.carwarehouse.models.ItemEntity;
 import com.example.carwarehouse.services.ItemService;
 import com.example.carwarehouse.vo.ItemVO;
 import org.apache.commons.io.IOUtils;
@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/item")
 public class ItemController {
