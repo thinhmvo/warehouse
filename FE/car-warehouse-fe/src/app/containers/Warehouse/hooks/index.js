@@ -26,7 +26,7 @@ export const uesWarehouse = () => {
   };
   const openEditCar = (info = null) => {
     if (info) {
-      setIsEditWarehouse(true);
+      setIsEditCar(true);
       setInfoUpdate(info);
     }
   };
@@ -43,7 +43,7 @@ export const uesWarehouse = () => {
         // responseType: "arraybuffer",
       });
 
-     // Handle response from server here
+      // Xử lý kết quả trả về từ server ở đây
       console.log("File uploaded successfully", response);
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -77,7 +77,7 @@ export const uesWarehouse = () => {
       if (infoCar) {
         const res = await axios.put("http://localhost:8080/api/item", {
           carVin: infoCar.carVin,
-          warehouseId: id,
+          warehouseId: infoCar.warehouseId,
           make: infoCar.make,
           model: infoCar.model,
           color: infoCar.color,

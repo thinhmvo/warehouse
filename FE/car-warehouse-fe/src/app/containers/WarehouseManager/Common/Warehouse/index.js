@@ -9,7 +9,7 @@ import Router from "next/router";
 
 const { Meta } = Card;
 
-const Car = ({ info = null, deleteCar, openEditCar }) => {
+const Warehouse = ({ info = null, deleteWarHouse, openEditWarehouse }) => {
   const { confirm } = Modal;
 
   const showDeleteConfirm = () => {
@@ -21,7 +21,7 @@ const Car = ({ info = null, deleteCar, openEditCar }) => {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        deleteCar(info.carVin);
+        deleteWarHouse(info.id);
       },
       onCancel() {
         console.log("Cancel");
@@ -39,7 +39,7 @@ const Car = ({ info = null, deleteCar, openEditCar }) => {
         />
       }
       actions={[
-        <EditOutlined key="edit" onClick={() => openEditCar(info)} />,
+        <EditOutlined key="edit" onClick={() => openEditWarehouse(info)} />,
         <RestOutlined key="delete" onClick={() => showDeleteConfirm()} />,
       ]}
     >
@@ -50,10 +50,8 @@ const Car = ({ info = null, deleteCar, openEditCar }) => {
         title={info?.name}
         description={
           <div>
-            <p>Car Vin: {info.carVin}</p>
-            <p>Make: {info.make}</p>
-            <p>Model: {info.model}</p>
-            <p>Color: {info.color}</p>
+            <p>Capacity: {info.capacity}</p>
+            <p>Available: {info.available}</p>
           </div>
         }
       />
@@ -61,4 +59,4 @@ const Car = ({ info = null, deleteCar, openEditCar }) => {
   );
 };
 
-export default Car;
+export default Warehouse;

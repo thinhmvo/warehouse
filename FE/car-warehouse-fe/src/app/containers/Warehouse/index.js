@@ -3,7 +3,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Col, Result, Row, Spin } from "antd";
 import AddCar from "./Common/AddCar";
 import Car from "./Common/Car";
-// import EditWarehouse from "./Common/EditWarehouse";
+import EditCar from "./Common/EditCar";
 import { uesWarehouse } from "./hooks";
 import { LayoutButton, LayoutWarehouse } from "./styled";
 import Router from "next/router";
@@ -25,15 +25,15 @@ const Warehouse = () => {
   return (
     <Spin spinning={isLoading}>
       <LayoutWarehouse>
-        {/* {isEditWarehouse && (
-          <EditWarehouse
+        {isEditCar && (
+          <EditCar
             info={infoUpdate}
-            isOpen={isEditWarehouse}
-            updateWarehouse={updateWarehouse}
-            onCancel={() => setIsEditWarehouse(false)}
+            isOpen={isEditCar}
+            updateCar={updateCar}
+            onCancel={() => setIsEditCar(false)}
           />
         )}
-       */}
+
         {isAddCard && (
           <AddCar
             isOpen={isAddCard}
@@ -41,32 +41,33 @@ const Warehouse = () => {
             onCancel={() => setIsAddCar(false)}
           />
         )}
+        <LayoutButton>
+          <Button
+            icon={<ArrowLeftOutlined />}
+            onClick={() => Router.push("/warehouse-manager")}
+            type="text"
+          />
+          {cars.length > 0 && (
+            <Button onClick={() => setIsAddCar(true)} type="primary">
+              Add car
+            </Button>
+          )}
+        </LayoutButton>
         {cars.length > 0 ? (
-          <>
-            <LayoutButton>
-              <Button
-                icon={<ArrowLeftOutlined />}
-                onClick={() => Router.push("/home")}
-                type="text"
-              />
-              <Button onClick={() => setIsAddCar(true)} type="primary">
-                Add car
-              </Button>
-            </LayoutButton>
-            <Row style={{ width: "100%" }} gutter={[16, 16]}>
-              {cars.map((item) => {
-                return (
-                  <Col span={6}>
-                    <Car
-                      info={item}
-                      deleteCar={deleteCar}
-                      //   openEditWarehouse={openEditWarehouse}
-                    />
-                  </Col>
-                );
-              })}
-            </Row>
-          </>
+          <Row style={{ width: "100%" }} gutter={[16, 16]}>
+            {cars.map((item, index) => {
+              return (
+                <Col span={6}>
+                  <Car
+                    key={index}
+                    info={item}
+                    deleteCar={deleteCar}
+                    openEditCar={openEditCar}
+                  />
+                </Col>
+              );
+            })}
+          </Row>
         ) : (
           <Result
             status="403"

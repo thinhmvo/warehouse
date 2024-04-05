@@ -1,45 +1,16 @@
-/* eslint-disable jsx-a11y/alt-text */
-import { Button, Form, Input, Upload, Modal, Image } from "antd";
-import { useState } from "react";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Modal, Select } from "antd";
+import { useEditCar } from "./hook";
 
-const AddCar = ({ isOpen, onCancel, createCar }) => {
-  const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState(null);
-  const [fileImage, setFileImage] = useState(null);
-
+const EditCar = ({ isOpen, onCancel, updateCar, info }) => {
   const onFinish = (values) => {
-    createCar(values, fileImage);
+    updateCar(values);
     onCancel();
   };
-  const handleChange = (info) => {
-    if (info.file) {
-      const imageUrl = URL.createObjectURL(info.file.originFileObj);
-      setImageUrl(imageUrl);
-      setFileImage(info.file);
-    }
-  };
-  const uploadButton = (
-    <button
-      style={{
-        border: 0,
-        background: "none",
-      }}
-      type="button"
-    >
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </button>
-  );
+  const { warehouses } = useEditCar();
+
   return (
     <Modal
-      title="Add Car"
+      title="Edit Car"
       open={isOpen}
       onCancel={onCancel}
       centered
@@ -51,6 +22,7 @@ const AddCar = ({ isOpen, onCancel, createCar }) => {
           maxWidth: 600,
         }}
         onFinish={onFinish}
+        initialValues={info}
       >
         <Form.Item
           label="Car Vin"
@@ -62,9 +34,26 @@ const AddCar = ({ isOpen, onCancel, createCar }) => {
             },
           ]}
         >
-          <Input />
+          <Input disabled />
         </Form.Item>
-
+        <Form.Item
+          name="warehouseId"
+          label="WareHouse"
+          rules={[
+            {
+              required: true,
+              message: "Please select WareHouse!",
+            },
+          ]}
+        >
+          <Select>
+            {warehouses?.map((item, index) => (
+              <Select.Option key={index} value={item.id}>
+                {item.name}
+              </Select.Option>
+            ))}
+          </Select>
+        </Form.Item>
         <Form.Item
           label="Make"
           name="make"
@@ -113,23 +102,6 @@ const AddCar = ({ isOpen, onCancel, createCar }) => {
         >
           <Input />
         </Form.Item>
-        {/* <Form.Item label="Image">
-          {imageUrl ? (
-            <Image preview={false} src={imageUrl} />
-          ) : (
-            <Upload
-              name="avatar"
-              listType="picture-circle"
-              className="avatar-uploader"
-              showUploadList={false}
-              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-              onChange={handleChange}
-            >
-              {uploadButton}
-            </Upload>
-          )}
-        </Form.Item> */}
-
         <Form.Item
           wrapperCol={{
             offset: 21,
@@ -145,4 +117,4 @@ const AddCar = ({ isOpen, onCancel, createCar }) => {
   );
 };
 
-export default AddCar;
+export default EditCar;

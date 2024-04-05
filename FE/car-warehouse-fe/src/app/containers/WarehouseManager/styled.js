@@ -1,13 +1,12 @@
 const { default: styled } = require("styled-components");
 
 const LayoutHome = styled.div`
+  width: 1400px;
   margin: auto;
-  height: 85vh;
+  height: 100vh;
   padding: 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: center;
-  justify-content: center;
 `;
 export { LayoutHome };
