@@ -28,7 +28,7 @@ public class ItemEntity {
     @Column(name = "color", length = 50)
     private String color;
 
-    @Column(name = "imgId")
+    @Column(name = "img_id")
     private String imgId;
 
     @Column(name = "year")

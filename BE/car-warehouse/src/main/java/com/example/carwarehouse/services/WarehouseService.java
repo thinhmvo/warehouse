@@ -43,6 +43,7 @@ public class WarehouseService {
         }
 
         warehouseRepository.deleteById(id);
+    
         return entity;
     }
 }
